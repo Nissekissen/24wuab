@@ -57,11 +57,14 @@ header {
 	padding: 0 30px;
 }
 
+section {
+	height: 100vh;
+}
+
 #intro {
 	background-image: url(../img/intro-bg.jpg);
 	background-size: cover;
 	background-position: center center;
-	height: 100vh;
 	color: #fff;
 	text-align: center;
 	display: grid;
@@ -81,10 +84,13 @@ header {
 	align-items: center;
 }
 
+h2 {
+    font-size: 3rem;
+    font-weight: bold
+}
+
 .intro-text {
-	font-size: 3rem;
 	text-align: left;
-	font-weight: bold;
 }
 
 .intro-btns {
@@ -98,9 +104,8 @@ header {
 	justify-content: start;
 }
 
-#section1 {
-	height: 100vh;
-    padding: 0 100px;
+.content-section {
+	padding: 0 100px;
 	display: flex;
 	align-items: center;
 }
@@ -114,6 +119,17 @@ header {
 
 .section-text h2 {
 	width: 75%;
+}
+
+.section-img {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.section-img img {
+	width: 100%;
 }
 
 .btn {
@@ -171,7 +187,7 @@ header {
 
 .carousel-cell {
     width: 70%;
-    height: 90%;
+    height: 100%;
     margin: 0 20px;
     background-color: red;
     transform: scale(1);
