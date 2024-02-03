@@ -39,6 +39,12 @@ header {
     z-index: 5;
 }
 
+header .menu-btn {
+	display: none;
+	position: absolute;
+	left: 1.5rem;
+}
+
 .logo {
 	padding: 1.5rem 50px;
 	display: flex;
@@ -87,6 +93,11 @@ nav ul li a:hover {
 	
 	header {
 		justify-content: center;
+	}
+
+	header .menu-btn {
+		display: block;
+		/* padding: 1.5rem 1.5rem; */
 	}
 }
 
@@ -146,6 +157,54 @@ nav ul li a:hover {
 .homepage-link a {
 	text-decoration: none;
 	color: #000;
+}
+
+@keyframes menuSlideIn {
+	0% {
+		transform: translateX(-100%);
+		display: block;
+	}
+	100% {
+		transform: translateX(0);
+		display: block;
+	}
+}
+
+@keyframes menuSlideOut {
+	0% {
+		transform: translateX(0);
+		display: block;
+	}
+	100% {
+		transform: translateX(-100%);
+		display: block;
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+	#dashboardMain {
+		grid-template-areas: 'content';
+		grid-template-columns: 1fr;
+	}
+	
+	#dashboardNav {
+		display: none;
+		transform: translateX(-100%);
+		width: 70%;
+		height: calc(100% - var(--header-height));
+		transition: all 0.5s;
+		animation: menuSlideOut 0.2s ease-in-out;
+		position: fixed;
+		box-shadow: 0 0 24px rgba(0, 0, 0, 0.16);
+	}
+	
+	#dashboardNav.menu.menu--open {
+		transform: translateX(0);
+		display: block;
+		position: fixed;
+		animation: menuSlideIn 0.2s ease-in-out;
+	}
 }
 
 section {
