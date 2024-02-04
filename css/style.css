@@ -4,6 +4,10 @@
 	--color-primary-light: #4a8fff;
 	--color-primary-alpha-1: rgba(38, 122, 249, 0.1);
 	--color-primary-alpha-2: rgba(38, 122, 249, 0.3);
+
+	--background: #fff;
+	--background-2: #f4f4f4;
+	--background-3: #e0e0e0;
 }
 
 *,
@@ -29,7 +33,7 @@ body {
 
 /* Header */
 header {
-	background-color: #fff;
+	background-color: var(--background);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	position: fixed;
 	width: 100%;
@@ -113,7 +117,7 @@ nav ul li a:hover {
 
 #dashboardNav {
 	grid-area: nav;
-	background-color: #f4f4f4;
+	background-color: var(--background-2);
 	
 }
 
@@ -146,7 +150,7 @@ nav ul li a:hover {
 }
 
 #dashboardNav a:hover {
-	background-color: #e0e0e0;
+	background-color: var(--background-3);
 	text-decoration: none;
 }
 
@@ -387,8 +391,49 @@ h2 {
 	text-decoration: none;
 }
 
+.item h2 {
+	line-height: 1.17rem;
+}
+
+.item p {
+	font-size: 1rem;
+	line-height: 1rem;
+}
+
+.placeholder-item .item-text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.placeholder-item-title {
+	display: block;
+	min-height: 1.17rem;
+	width: 150px;
+	background: var(--background-3);
+	border-radius: 3px;
+}
+
+.placeholder-item-subtitle {
+	display: block;
+	min-height: 1rem;
+	width: 100px;
+	background: var(--background-3);
+	border-radius: 3px;
+}
+
+.btn.placeholder {
+	color: var(--background-3);
+	background-color: var(--background-3);
+}
+
+.btn.placeholder:hover {
+	color: var(--background-3);
+	background-color: var(--background-3);
+}
+
 .item:hover {
-	background-color: #f4f4f4;
+	background-color: var(--background-2);
 }
 
 .item-list-divider {
@@ -411,7 +456,7 @@ h2 {
 }
 
 .btn-secondary {
-	background-color: #fff;
+	background-color: var(--background);
 	color: var(--color-primary);
 	border: 1px solid var(--color-primary);
 }
