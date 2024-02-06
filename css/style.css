@@ -582,6 +582,23 @@ h2 {
 	text-align: center;
 }
 
+@media screen and (max-width: 450px) {
+
+	.content-wrapper {
+		flex-direction: column;
+	}
+
+	.content-wrapper .left-row {
+		width: 100%;
+		border-right: none;
+	}
+
+	.content-wrapper .right-row {
+		width: 100%;
+		height: fit-content;
+	}
+}
+
 .btn {
 	padding: 10px 20px;
 	border-radius: 5px;
