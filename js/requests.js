@@ -25,3 +25,7 @@ function getQueueItemsFromID(id, callback, errCallback) {
 function addItemToQueue(item, callback, errCallback) {
     axios.post(`${url}/queue`, item).then(callback, errCallback);
 }
+
+function removeItemFromQueue(id, callback, errCallback) {
+    axios.delete(`${url}/queue/${id}`).then(callback, errCallback);
+}
