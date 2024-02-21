@@ -1,30 +1,46 @@
 
 const itemList = document.querySelector('.item-list');
 
+function updateQueueList() {
 getQueue(res => {
+    const itemList = document.querySelector('.item-list');
     itemList.innerHTML = '';
-    res.data.forEach(item => {
+    res.data.forEach((item) => {
         const itemElement = document.createElement('div');
-        itemElement.setAttribute('data-id', item.id)
         itemElement.classList.add('item');
+
+        const itemTextWrapper = document.createElement('div');
+        itemTextWrapper.classList.add('item-text-wrapper');
 
         const itemText = document.createElement('div');
         itemText.classList.add('item-text');
-        itemText.innerHTML = `<h3>${item.name}</h3><p>${item.amount}st</p>`;
+        itemText.innerHTML = `<h3>${item.amount}st</h3>`;
         itemElement.appendChild(itemText);
 
-        getItem(item.item_id, res => {
-            console.log(res.data);
-            console.log(document.querySelector(`.item[data-id="${item.id}"] .item-text h3`));
-            document.querySelector(`.item[data-id="${item.id}"] .item-text h3`).innerHTML = res.data.name;
-        }, console.error);
+        const itemStatus = document.createElement('div');
+        itemStatus.classList.add('item-status');
+
+        const statusText = item.status === 0 ?
+            'Queued' : item.status == 1 ?
+                'In Progress' : item.status == 2 ?
+                    'Completed' : 'Failed';
+
+        itemStatus.classList.add(`${statusText.toLowerCase()}`)
+        itemStatus.innerHTML = `<p>${statusText}</p>`;
+        // itemElement.appendChild(itemStatus);
+
+        itemTextWrapper.appendChild(itemText);
+        // itemTextWrapper.appendChild(itemStatus);
+
+        itemElement.appendChild(itemTextWrapper);
 
         const itemButtons = document.createElement('div');
         itemButtons.classList.add('item-buttons');
-        itemButtons.innerHTML = `<a
-        class="btn btn-primary"
-        href="details.html?id=${item.id}"
-        >Detaljer</a>`
+        itemButtons.innerHTML = `<button
+        class="btn btn-danger remove-btn"
+        id="${item.id}"
+        >Avbryt</button>`
+        itemButtons.appendChild(itemStatus);
         itemElement.appendChild(itemButtons);
 
         itemList.appendChild(itemElement);
@@ -33,5 +49,20 @@ getQueue(res => {
         divider.classList.add('item-list-divider');
 
         itemList.appendChild(divider);
-    });
+    })
+
+    document.querySelectorAll('.remove-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            console.log(e.target.id)
+            removeItemFromQueue(e.target.id, (res) => {
+                updateQueueList();
+            }, (err) => {
+                alert('Det gick inte att ta bort varan från kön');
+                console.error(err);
+            });
+        });
+    })
 })
+}
+
+updateQueueList();

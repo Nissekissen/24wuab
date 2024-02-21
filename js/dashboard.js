@@ -5,6 +5,7 @@ const itemList = document.querySelector('.item-list');
 getItems((res) => {
     itemList.innerHTML = '';
     res.data.forEach((item) => {
+        console.log(item);
         const itemElement = document.createElement('div');
         itemElement.classList.add('item');
 

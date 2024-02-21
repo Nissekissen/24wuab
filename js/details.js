@@ -35,6 +35,7 @@ getItem(id, (res) => {
 function updateQueueList() {
     // Get queue items
     getQueueItemsFromID(id, (res) => {
+        console.log(res);
         const itemList = document.querySelector('.item-list');
         itemList.innerHTML = '';
         res.data.forEach((item) => {
@@ -51,8 +52,14 @@ function updateQueueList() {
 
             const itemStatus = document.createElement('div');
             itemStatus.classList.add('item-status');
-            itemStatus.classList.add(`${item.status.replace(' ', '-').toLowerCase()}`)
-            itemStatus.innerHTML = `<p>${item.status}</p>`;
+
+            const statusText = item.status === 0 ?
+             'Queued' : item.status == 1 ?
+             'In Progress' : item.status == 2 ?
+             'Completed' : 'Failed';
+
+            itemStatus.classList.add(`${statusText.toLowerCase()}`)
+            itemStatus.innerHTML = `<p>${statusText}</p>`;
             // itemElement.appendChild(itemStatus);
 
             itemTextWrapper.appendChild(itemText);
