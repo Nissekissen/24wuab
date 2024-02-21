@@ -100,4 +100,12 @@ function updateQueueList() {
     });
 }
 
+document.getElementById('removeItemBtn').addEventListener('click', e => {
+    removeItem(id, res => {
+        window.location.href = '/dashboard';
+    }, err => {
+        console.error(err);
+    });
+})
+
 updateQueueList();

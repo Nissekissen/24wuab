@@ -65,12 +65,20 @@
 				<div id="dashboardContent">
 					<div class="content-wrapper">
 						<div class="left-row">
-                            <div class="item-brief">
-                                <h2 class="item-title" id="itemName">
-                                    Röda legobitar
-                                </h2>
-                                <p id="amount"></p>
-                            </div>
+							<div class="item-header">
+								<div class="item-brief">
+									<h2 class="item-title" id="itemName">
+										Röda legobitar
+									</h2>
+									<p id="amount"></p>
+								</div>
+								<button
+									class="btn btn-danger"
+									id="removeItemBtn"
+								>
+									Ta bort
+								</button>
+							</div>
 							<div class="item-details">
 								<div class="orders">
 									<h3>Beställningar</h3>
@@ -93,7 +101,7 @@
 											</div>
 										</div>
 										<div class="item-list-divider"></div>
-                                        <div class="item placeholder-item">
+										<div class="item placeholder-item">
 											<div class="item-text">
 												<h3
 													class="placeholder-item-title"
@@ -111,7 +119,7 @@
 											</div>
 										</div>
 										<div class="item-list-divider"></div>
-                                        <div class="item placeholder-item">
+										<div class="item placeholder-item">
 											<div class="item-text">
 												<h3
 													class="placeholder-item-title"

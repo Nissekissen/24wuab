@@ -14,6 +14,10 @@ function addItem(item, callback, errCallback) {
     axios.post(`${url}/items`, item).then(callback, errCallback);
 }
 
+function removeItem(id, callback, errCallback) {
+    axios.delete(`${url}/items/${id}`).then(callback, errCallback);
+}
+
 function getQueue(callback, errCallback) {
     axios.get(`${url}/queue`).then(callback).catch(errCallback);
 }
