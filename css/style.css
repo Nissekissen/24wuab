@@ -18,6 +18,8 @@
 	--queued-border: #1e62d0;
 	--done: #00cc66;
 	--done-border: #00b359;
+	--failed: var(--color-danger);
+	--failed-border: var(--color-danger-dark);
 }
 
 *,
@@ -58,6 +60,14 @@ header .menu-btn {
 	display: none;
 	position: absolute;
 	left: 1.5rem;
+}
+
+header .add-product {
+	display: none;
+	position: absolute;
+	right: 1.5rem;
+	padding: 0.5rem;
+	height: 2.5rem;
 }
 
 .logo {
@@ -110,7 +120,8 @@ nav ul li a:hover {
 		justify-content: center;
 	}
 
-	header .menu-btn {
+	header .menu-btn,
+	header .add-product {
 		display: block;
 		/* padding: 1.5rem 1.5rem; */
 	}
@@ -376,6 +387,7 @@ h2 {
 	grid-area: content;
 	padding: 20px;
 	width: 100%;
+	overflow-y: scroll;
 }
 
 .dashboardHeader {
@@ -391,6 +403,13 @@ h2 {
 	display: flex;
 	align-items: center;
 	gap: 10px;
+}
+
+@media screen and (max-width: 450px) {
+	.dashboardHeader a,
+	.item-header button {
+		display: none;
+	}
 }
 
 .item-list {
@@ -455,6 +474,7 @@ h2 {
 	padding: 5px 10px;
 	border-radius: 5px;
 	font-weight: 600;
+	color: white;
 }
 
 .item-buttons {
@@ -466,12 +486,21 @@ h2 {
 .item-status.queued {
 	background: var(--queued);
 	border: 1px solid var(--queued-border);
-	color: white;
 }
 
 .item-status.in-progress {
 	background: var(--in-progress);
 	border: 1px solid var(--in-progress-border);
+}
+
+.item-status.completed {
+	background: var(--done);
+	border: 1px solid var(--done-border);
+}
+
+.item-status.failed {
+	background: var(--failed);
+	border: 1px solid var(--failed-border);
 }
 
 .placeholder-item-title {

@@ -53,12 +53,12 @@ function updateQueueList() {
             const itemStatus = document.createElement('div');
             itemStatus.classList.add('item-status');
 
-            const statusText = item.status === 0 ?
-             'Queued' : item.status == 1 ?
-             'In Progress' : item.status == 2 ?
-             'Completed' : 'Failed';
+            const statusText = item.status === 0 ?'Queued' :
+                item.status == 1 ? 'In Progress' :
+                item.status == 2 ? 'Completed' :
+                'Failed';
 
-            itemStatus.classList.add(`${statusText.toLowerCase()}`)
+            itemStatus.classList.add(`${statusText.toLowerCase().replace(' ', '-')}`)
             itemStatus.innerHTML = `<p>${statusText}</p>`;
             // itemElement.appendChild(itemStatus);
 
@@ -100,12 +100,12 @@ function updateQueueList() {
     });
 }
 
-document.getElementById('removeItemBtn').addEventListener('click', e => {
+document.querySelectorAll('.remove-item-btn').forEach(element => element.addEventListener('click', e => {
     removeItem(id, res => {
         window.location.href = '/dashboard';
     }, err => {
         console.error(err);
     });
-})
+}));
 
 updateQueueList();
