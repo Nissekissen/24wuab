@@ -12,6 +12,14 @@
 	--background-2: #f4f4f4;
 	--background-3: #e0e0e0;
 
+	--background-dark: #1f1f29;
+	--background-dark-2: #2b2b3b;
+	--background-dark-3: #3b3b4b;
+
+	--text-color: #000;
+	--text-color-dark: #fff;
+
+
 	--in-progress: #ffcc00;
 	--in-progress-border: #e6b800;
 	--queued: #267af9;
@@ -35,6 +43,7 @@ body {
 	font-family: "Montserrat", sans-serif;
 	min-height: 100vh;
 	overflow-x: hidden;
+	color: var(--text-color);
 }
 
 .wrapper {
@@ -101,7 +110,7 @@ nav ul {
 
 nav ul li a {
 	text-decoration: none;
-	color: #000;
+	color: var(--text-color);
 	font-size: 1.2rem;
 	font-weight: 400;
 }
@@ -141,7 +150,8 @@ nav ul li a:hover {
 
 #dashboardNav {
 	grid-area: nav;
-	background-color: var(--background-2);
+	background-color: var(--background);
+	border-right: 1px solid var(--background-3);
 }
 
 #dashboardNav nav {
@@ -173,7 +183,7 @@ nav ul li a:hover {
 }
 
 #dashboardNav a:hover {
-	background-color: var(--background-3);
+	background-color: var(--background-2);
 	text-decoration: none;
 }
 
@@ -183,7 +193,7 @@ nav ul li a:hover {
 
 .homepage-link a {
 	text-decoration: none;
-	color: #000;
+	color: var(--text-color);
 }
 
 @keyframes menuSlideIn {
@@ -223,6 +233,8 @@ nav ul li a:hover {
 		animation: menuSlideOut 0.2s ease-in-out;
 		position: fixed;
 		box-shadow: 0 0 24px rgba(0, 0, 0, 0.16);
+		background-color: var(--background-2);
+		border-right: none;
 	}
 
 	#dashboardNav.menu.menu--open {
@@ -230,6 +242,10 @@ nav ul li a:hover {
 		display: block;
 		position: fixed;
 		animation: menuSlideIn 0.2s ease-in-out;
+	}
+
+	#dashboardNav a:hover {
+		background-color: var(--background-3);
 	}
 }
 
@@ -388,6 +404,7 @@ h2 {
 	padding: 20px;
 	width: 100%;
 	overflow-y: scroll;
+	background-color: var(--background);
 }
 
 .dashboardHeader {
@@ -442,7 +459,7 @@ h2 {
 	align-items: center;
 	border-radius: 5px;
 	margin: 10px 0;
-	color: black;
+	color: var(--text-color);
 	text-decoration: none;
 }
 

@@ -4,8 +4,16 @@ const itemList = document.querySelector('.item-list');
 
 getItems((res) => {
     itemList.innerHTML = '';
+    if (res.data.length === 0) {
+        const errorElement = document.querySelector('.item-list');
+        errorElement.classList.remove('item-list');
+        errorElement.classList.add('error');
+
+        errorElement.innerHTML = `<h3>Inga varor hittades</h3>`;
+        return;
+    }
     res.data.forEach((item) => {
-        console.log(item);
+        
         const itemElement = document.createElement('div');
         itemElement.classList.add('item');
 

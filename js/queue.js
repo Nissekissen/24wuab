@@ -5,6 +5,14 @@ function updateQueueList() {
 getQueue(res => {
     const itemList = document.querySelector('.item-list');
     itemList.innerHTML = '';
+    if (res.data.length === 0) {
+        const errorElement = document.querySelector('.item-list');
+        errorElement.classList.remove('item-list');
+        errorElement.classList.add('error');
+
+        errorElement.innerHTML = `<h3>Inga varor i kön</h3>`;
+        return;
+    }
     res.data.forEach((item) => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('item');
@@ -25,7 +33,7 @@ getQueue(res => {
                 'In Progress' : item.status == 2 ?
                     'Completed' : 'Failed';
 
-        itemStatus.classList.add(`${statusText.toLowerCase()}`)
+        itemStatus.classList.add(`${statusText.toLowerCase().replace(' ', '-')}`)
         itemStatus.innerHTML = `<p>${statusText}</p>`;
         // itemElement.appendChild(itemStatus);
 
