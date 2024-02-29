@@ -11,64 +11,52 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,700&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+		/>
 		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 	</head>
 	<body>
 		<div class="wrapper">
-			<header>
-				<h1 class="logo">Robotlager</h1>
-				<div class="main-nav">
-					<nav>
-						<ul>
-							<li><a href="#">Om oss</a></li>
-							<li><a href="#">Våra Produkter</a></li>
-							<li><a href="#">Kontakt</a></li>
-						</ul>
-					</nav>
-					<a href="dashboard/" class="btn btn-primary">Gå till panelen</a>
-				</div>
-			</header>
 			<main>
 				<section id="intro">
-					<div class="intro-content-wrapper">
-						<h2 class="intro-text">
-							De senaste framgångarna inom automatiska lager är
-							här
-						</h2>
-						<div class="intro-btns">
-							<a class="btn btn-primary">Läs mer</a>
+					<div class="intro-content">
+						<div class="timeline">
+							<div class="timeline-ball"></div>
+							<div
+								class="timeline-line first"
+								style="height: 175px"
+							></div>
+							<div class="timeline-icon">
+								<svg
+									class="w-6 h-6 text-gray-800 dark:text-white"
+									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1"
+										d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"
+									/>
+								</svg>
+							</div>
+							<div class="timeline-line" style="height: 300px"></div>
 						</div>
-					</div>
-				</section>
-				<section id="section1" class="content-section">
-					<div class="carousel-wrapper">
-
-						<div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": 3000, "adaptiveHeight": true, "setGallerySize": false }'>
-							<div class="carousel-cell"></div>
-							<div class="carousel-cell"></div>
-							<div class="carousel-cell"></div>
-						</div>
-					</div>
-					<div class="section-text">
-						<h2>Upptäck mer med ny teknik inom hemmarobotlager</h2>
-					</div>
-				</section>
-				<section id="section2" class="content-section">
-					<div class="section-text">
-						<h2>Tekniken fortsätter att uvecklas - det gör vi med</h2>
-					</div>
-					<div class="section-img">
-						<img src="img/robot.jpg" alt="" />
-					</div>
-				</section>
-				<section id="outro">
-					<div class="outro-content-wrapper">
-						<h2 class="outro-text">
-							Upptäck mer hos oss
-						</h2>
-						<div class="outro-btns">
-							<a href="dashboard/" class="btn btn-primary">Till panelen</a>
+						<div class="section-content">
+							<div class="section-text">
+								<h1>Världens första skrivbordslager</h1>
+								<p>Styrt från en enkel hemsida</p>
+							</div>
+							<div class="section-btns">
+								<a href="./dashboard/" class="btn btn-primary"
+									>Gå till panelen</a
+								>
+							</div>
 						</div>
 					</div>
 				</section>
