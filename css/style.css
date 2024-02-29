@@ -249,20 +249,22 @@ nav ul li a:hover {
 }
 
 section {
-	height: 100vh;
+	height: 200vh;
 }
 
 #intro {
 	padding: 0 0 0 170px;
 	background-image: url(../img/intro-bg.jpg);
 	background-size: cover;
+	background-position: center center;
 }
 
 #intro .intro-content {
 	display: grid;
 	grid-template-columns: 100px 1fr;
-	grid-template-rows: 1fr;
-	grid-template-areas: "timeline intro-content";
+	grid-template-rows: 1fr 700px;
+	grid-template-areas: "timeline intro-content"
+	"intro-image intro-image";
 	width: 100%;
 	height: 100%;
 	padding-top: 200px;
@@ -274,12 +276,12 @@ section {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 200vh;
 	background: rgb(255, 255, 255);
 	background: linear-gradient(
 		131deg,
 		rgba(255, 255, 255, 1) 0%,
-		rgba(255, 255, 255, 1) 31%,
+		rgba(255, 255, 255, 1) 15%,
 		rgba(255, 255, 255, 0) 100%
 	);
 	z-index: 0;
@@ -292,6 +294,25 @@ section {
 	z-index: 1;
 	gap: 10px;
 	position: relative;
+}
+
+#intro .intro-image-wrapper {
+	grid-area: intro-image;
+	padding: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	left: -85px;
+	top: -150px;
+	z-index: 2;
+}
+
+#intro .intro-image-wrapper img {
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid white;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .timeline-ball {
