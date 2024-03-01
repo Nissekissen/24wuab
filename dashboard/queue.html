@@ -11,10 +11,10 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,700&display=swap"
 			rel="stylesheet"
 		/>
-        <script src="../js/menu.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
-        <script src="../js/requests.js" defer></script>
-        <script src="../js/queue.js" defer></script>
+		<script src="../js/menu.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+		<script src="../js/requests.js" defer></script>
+		<script src="../js/queue.js" defer></script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -63,47 +63,109 @@
 					</nav>
 				</div>
 				<div id="dashboardContent">
-					<h2 class="dashboardHeader">Nuvarande kö</h2>
+					<div class="dashboardHeader">
+						<h2>Nuvarande kö</h2>
+						<div class="btn-row">
+							<button
+								title="Ladda om"
+								class="icon-btn"
+								id="refreshQueue"
+							>
+								<svg
+									class="w-6 h-6 text-gray-800 dark:text-white"
+									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.5"
+										d="M17.7 7.7A7.1 7.1 0 0 0 5 10.8M18 4v4h-4m-7.7 8.3A7.1 7.1 0 0 0 19 13.2M6 20v-4h4"
+									/>
+								</svg>
+							</button>
+							<button
+								title="Rensa kö"
+								class="icon-btn"
+								id="clearQueue"
+							>
+								<svg
+									class="w-6 h-6 text-gray-800 dark:text-white"
+									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.5"
+										d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+									/>
+								</svg>
+							</button>
+						</div>
+					</div>
 					<div class="item-list">
-                        <div class="item placeholder-item">
-                            <div class="item-text">
-                                <h3 class="placeholder-item-title"></h3>
-                                <p class="placeholder-item-subtitle"></p>
-                            </div>
-                            <div class="item-buttons">
-                                <a class="btn btn-primary placeholder" href="details.html?id=5">Detaljer</a>
-                            </div>
-                        </div>
+						<div class="item placeholder-item">
+							<div class="item-text">
+								<h3 class="placeholder-item-title"></h3>
+								<p class="placeholder-item-subtitle"></p>
+							</div>
+							<div class="item-buttons">
+								<a
+									class="btn btn-primary placeholder"
+									href="details.html?id=5"
+									>Detaljer</a
+								>
+							</div>
+						</div>
 						<div class="item-list-divider"></div>
 						<div class="item placeholder-item">
-                            <div class="item-text">
-                                <h3 class="placeholder-item-title"></h3>
-                                <p class="placeholder-item-subtitle"></p>
-                            </div>
-                            <div class="item-buttons">
-                                <a class="btn btn-primary placeholder" href="details.html?id=5">Detaljer</a>
-                            </div>
-                        </div>
+							<div class="item-text">
+								<h3 class="placeholder-item-title"></h3>
+								<p class="placeholder-item-subtitle"></p>
+							</div>
+							<div class="item-buttons">
+								<a
+									class="btn btn-primary placeholder"
+									href="details.html?id=5"
+									>Detaljer</a
+								>
+							</div>
+						</div>
 						<div class="item-list-divider"></div>
 						<div class="item placeholder-item">
-                            <div class="item-text">
-                                <h3 class="placeholder-item-title"></h3>
-                                <p class="placeholder-item-subtitle"></p>
-                            </div>
-                            <div class="item-buttons">
-                                <a class="btn btn-primary placeholder" href="details.html?id=5">Detaljer</a>
-                            </div>
-                        </div>
+							<div class="item-text">
+								<h3 class="placeholder-item-title"></h3>
+								<p class="placeholder-item-subtitle"></p>
+							</div>
+							<div class="item-buttons">
+								<a
+									class="btn btn-primary placeholder"
+									href="details.html?id=5"
+									>Detaljer</a
+								>
+							</div>
+						</div>
 						<div class="item-list-divider"></div>
 						<div class="item placeholder-item">
-                            <div class="item-text">
-                                <h3 class="placeholder-item-title"></h3>
-                                <p class="placeholder-item-subtitle"></p>
-                            </div>
-                            <div class="item-buttons">
-                                <a class="btn btn-primary placeholder" href="details.html?id=5">Detaljer</a>
-                            </div>
-                        </div>
+							<div class="item-text">
+								<h3 class="placeholder-item-title"></h3>
+								<p class="placeholder-item-subtitle"></p>
+							</div>
+							<div class="item-buttons">
+								<a
+									class="btn btn-primary placeholder"
+									href="details.html?id=5"
+									>Detaljer</a
+								>
+							</div>
+						</div>
 						<div class="item-list-divider"></div>
 					</div>
 				</div>

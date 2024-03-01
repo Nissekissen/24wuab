@@ -37,7 +37,22 @@ function updateQueueList() {
     getQueueItemsFromID(id, (res) => {
         console.log(res);
         const itemList = document.querySelector('.item-list');
+        if (!itemList) {
+            itemList = document.querySelector('.error');
+            itemList.classList.remove('error');
+            itemList.classList.add('item-list');
+        }
+
         itemList.innerHTML = '';
+
+        if (res.data.length === 0) {
+            const errorElement = document.querySelector('.item-list');
+            errorElement.classList.remove('item-list');
+            errorElement.classList.add('error');
+    
+            errorElement.innerHTML = `<h3>Inga varor i kön</h3>`;
+            return;
+        }
         res.data.forEach((item) => {
             const itemElement = document.createElement('div');
             itemElement.classList.add('item');

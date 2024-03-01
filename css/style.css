@@ -42,6 +42,10 @@
 	/* outline: 1px solid black; */
 }
 
+html, body {
+	overscroll-behavior-y: none;
+}
+
 body {
 	font-family: "Montserrat", sans-serif;
 	min-height: 100vh;
@@ -476,6 +480,39 @@ h2 {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.dashboardHeader h2 {
+	font-size: 2rem;
+}
+
+.icon-btn {
+	display: flex;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--background-3);
+	border: none;
+	padding: 8px;
+	border-radius: 100%;
+	background-color: var(--background-2);
+}
+
+.icon-btn svg {
+	width: 100%;
+	height: 100%;
+	color: var(--text-color);
+}
+
+.icon-btn:hover {
+	background-color: var(--background-3);
+	cursor: pointer;
+}
+
+.btn-row {
+	display: flex;
+	gap: 20px;
+	align-items: center;
 }
 
 .dashboardHeader a {
