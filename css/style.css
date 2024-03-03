@@ -12,16 +12,18 @@
 	--background-light-2: #f4f4f4;
 	--background-light-3: #e0e0e0;
 
-	--background-dark: #474747;
-	--background-dark-2: rgb(63, 63, 63);
-	--background-dark-3: #3b3b4b;
+	--background-dark: #121212;
+	--background-dark-2: rgb(54, 54, 54);
+	--background-dark-3: #575757;
 
 	--background: var(--background-light);
 	--background-2: var(--background-light-2);
 	--background-3: var(--background-light-3);
 
-	--text-color: #000;
+	--text-color-light: #000;
 	--text-color-dark: #fff;
+
+	--text-color: var(--text-color-light);
 
 	--in-progress: #ffcc00;
 	--in-progress-border: #e6b800;
@@ -31,7 +33,18 @@
 	--done-border: #00b359;
 	--failed: var(--color-danger);
 	--failed-border: var(--color-danger-dark);
+
+	--scroll: 0;
 }
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--background: var(--background-dark);
+		--background-2: var(--background-dark-2);
+		--background-3: var(--background-dark-3);
+		--text-color: var(--text-color-dark);
+	}
+} */
 
 *,
 *::before,
@@ -42,7 +55,8 @@
 	/* outline: 1px solid black; */
 }
 
-html, body {
+html,
+body {
 	overscroll-behavior-y: none;
 }
 
@@ -51,6 +65,8 @@ body {
 	min-height: 100vh;
 	overflow-x: hidden;
 	color: var(--text-color);
+	background-color: var(--background);
+	transition: background-color .1s ease-in-out, color .1s ease-in-out;
 }
 
 .wrapper {
@@ -70,6 +86,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	z-index: 5;
+	border-bottom: 1px solid var(--background-3);
 }
 
 header .menu-btn {
@@ -257,22 +274,44 @@ nav ul li a:hover {
 }
 
 section {
-	height: 200vh;
+	height: 100vh;
+}
+
+@property --intro-bg-color1 {
+	syntax: "<color>";
+	initial-value: white;
+	inherits: false;
+}
+
+@property --intro-bg-color2 {
+	syntax: "<color>";
+	initial-value: transparent;
+	inherits: false;
 }
 
 #intro {
+	height: 200vh;
 	padding: 0 0 0 170px;
 	background-image: url(../img/intro-bg.jpg);
 	background-size: cover;
 	background-position: center center;
+	--intro-background: linear-gradient(
+		131deg,
+		var(--intro-bg-color1) 0%,
+		var(--intro-bg-color1) 15%,
+		var(--intro-bg-color2) 100%
+	);
+	--intro-overlay: var(--intro-background);
+	transition: --intro-bg-color1 0.1s ease-in-out, --intro-bg-color2 0.1s ease-in-out;
 }
 
 #intro .intro-content {
 	display: grid;
 	grid-template-columns: 100px 1fr;
 	grid-template-rows: 1fr 700px;
-	grid-template-areas: "timeline intro-content"
-	"intro-image intro-image";
+	grid-template-areas:
+		"timeline intro-content"
+		"intro-image intro-image";
 	width: 100%;
 	height: 100%;
 	padding-top: 200px;
@@ -286,12 +325,7 @@ section {
 	width: 100%;
 	height: 200vh;
 	background: rgb(255, 255, 255);
-	background: linear-gradient(
-		131deg,
-		rgba(255, 255, 255, 1) 0%,
-		rgba(255, 255, 255, 1) 15%,
-		rgba(255, 255, 255, 0) 100%
-	);
+	background: var(--intro-overlay);
 	z-index: 0;
 }
 
@@ -319,8 +353,17 @@ section {
 #intro .intro-image-wrapper img {
 	width: 100%;
 	border-radius: 10px;
-	border: 1px solid white;
+	/* border: 1px solid white; */
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#introDashboardImage {
+	/* (oldVal - oldMin) * newRange / oldRange + newMin */
+	transform: translateX(
+		calc(1% * (min(max(var(--scroll), 110), 160) - 110) * 3)
+	);
+	/* translateY(calc(1vh * (min(max(var(--scroll), 110), 160) - 110))); */
+	/* transform: translateX(var(--scroll)); */
 }
 
 .timeline-ball {
@@ -341,11 +384,7 @@ section {
 
 .timeline-line.first {
 	background: rgb(255, 255, 255);
-	background: linear-gradient(
-		180deg,
-		transparent,
-		var(--color-primary) 50%
-	);
+	background: linear-gradient(180deg, transparent, var(--color-primary) 50%);
 }
 
 .timeline-icon {
@@ -360,6 +399,7 @@ section {
 .timeline-icon svg {
 	width: 100%;
 	height: 100%;
+	color: var(--text-color);
 }
 
 #intro .section-content {
@@ -461,6 +501,53 @@ h2 {
 	display: flex;
 	width: 100%;
 	justify-content: start;
+}
+
+.box-grid-wrapper {
+	width: 100%;
+	/* margin-top: 100px; */
+	padding: 0 100px;
+}
+
+.box-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-areas:
+		"a a b b b"
+		"c c c d d";
+	width: 100%;
+	height: 100%;
+	gap: 20px;
+}
+
+.grid-box {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-color: var(--background-2);
+	box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.16);
+	border: 1px solid var(--background-3);
+}
+
+.grid-a {
+	grid-area: a;
+	/* background-color: red; */
+}
+
+.grid-b {
+	grid-area: b;
+	/* background-color: blue; */
+}
+
+.grid-c {
+	grid-area: c;
+	/* background-color: green; */
+}
+
+.grid-d {
+	grid-area: d;
+	/* background-color: yellow; */
 }
 
 /* Dashboard content */
@@ -651,7 +738,7 @@ h2 {
 
 .item-list-divider {
 	width: 100%;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid var(--background-2);
 }
 
 .item-list-divider:last-child {
@@ -715,7 +802,7 @@ h2 {
 	width: 200px;
 	background: var(--background-3);
 	font-size: 1rem;
-	border: 1px solid #eee;
+	border: 1px solid var(--background-2);
 	padding: 10px 20px;
 	border-radius: 5px;
 }
