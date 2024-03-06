@@ -11,10 +11,7 @@ function setScrollVar() {
 
     // switch to dark mode if scroll is more than 100%
     if (percentage > 100) {
-        htmlElement.style.setProperty('--background', 'var(--background-dark)');
-        htmlElement.style.setProperty('--background-2', 'var(--background-dark-2)');
-        htmlElement.style.setProperty('--background-3', 'var(--background-dark-3)');
-        htmlElement.style.setProperty('--text-color', 'var(--text-color-dark)');
+        htmlElement.dataset.theme = 'dark';
 
         // change the background of #intro
         const intro = document.getElementById('intro');
@@ -28,11 +25,7 @@ function setScrollVar() {
 
         document.getElementById('introDashboardImage').attributes.src.value = '../img/darkmode.jpg';
     } else {
-        htmlElement.style.setProperty('--background', 'var(--background-light)');
-        htmlElement.style.setProperty('--background-2', 'var(--background-light-2)');
-        htmlElement.style.setProperty('--background-3', 'var(--background-light-3)');
-        htmlElement.style.setProperty('--text-color', 'var(--text-color-light)');
-
+        htmlElement.dataset.theme = 'light';
         const intro = document.getElementById('intro');
         intro.style.backgroundImage = 'url(../img/intro-bg.jpg)';
         intro.style.setProperty('--intro-bg-color1', 'white');

@@ -35,6 +35,17 @@
 	--failed-border: var(--color-danger-dark);
 
 	--scroll: 0;
+
+	--theme-switcher-text-color-dark: #b8b8b880;
+	--theme-switcher-text-color: #b1b0b580;
+	--theme-switcher-text-color-active: white;
+}
+
+html[data-theme="dark"] {
+	--background: var(--background-dark);
+	--background-2: var(--background-dark-2);
+	--background-3: var(--background-dark-3);
+	--text-color: var(--text-color-dark);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -87,6 +98,7 @@ header {
 	justify-content: space-between;
 	z-index: 5;
 	border-bottom: 1px solid var(--background-3);
+	transition: background-color 0.2s ease-in-out;
 }
 
 header .menu-btn {
@@ -112,6 +124,51 @@ header .add-product {
 	line-height: 2rem;
 	width: -moz-fit-content;
 	width: fit-content;
+}
+
+.theme-switcher {
+	display: flex;
+	/* width: 80px; */
+	margin: 0 20px;
+	padding: 2px;
+	gap: 5px;
+	border-radius: 34px;
+	background-color: var(--background-2);
+	color: var(--theme-switcher-text-color);
+	/* justify-content: space-between; */
+	cursor: pointer;
+}
+
+.theme-switcher .theme-icon {
+	width: 29px;
+	height: 29px;
+	display: block;
+	z-index: 1;
+	padding: 5px;
+	border-radius: 100%;
+	transition: color 4s linear(0, 0.026, 0.053, 0.08, 0.107, 0.13, 0.16, 0.187, 0.213, 0.24, 1);
+}
+
+.theme-icon.active {
+	color: var(--theme-switcher-text-color-active);
+	/* background: var(--color-primary); */
+}
+
+.theme-switcher .active-circle {
+	width: 29px;
+	height: 29px;
+	border-radius: 100%;
+	background-color: var(--color-primary);
+	transition: transform 4s linear(0, 0.026, 0.053, 0.08, 0.107, 0.13, 0.16, 0.187, 0.213, 0.24, 1);
+	position: absolute;
+	z-index: 0;
+}
+
+
+.active-circle.active {
+	/* when it is active */
+	/* float: right; */
+	transform: translateX(34px);
 }
 
 .main-nav {
@@ -176,6 +233,7 @@ nav ul li a:hover {
 	grid-area: nav;
 	background-color: var(--background);
 	border-right: 1px solid var(--background-3);
+	transition: background-color 0.2s ease-in-out;
 }
 
 #dashboardNav nav {
@@ -558,6 +616,7 @@ h2 {
 	width: 100%;
 	overflow-y: scroll;
 	background-color: var(--background);
+	transition: background-color 0.2s ease-in-out;
 }
 
 .dashboardHeader {
@@ -739,6 +798,7 @@ h2 {
 .item-list-divider {
 	width: 100%;
 	border-bottom: 1px solid var(--background-2);
+	transition: border-color 0.2s ease-in-out;
 }
 
 .item-list-divider:last-child {
@@ -803,6 +863,7 @@ h2 {
 	background: var(--background-3);
 	font-size: 1rem;
 	border: 1px solid var(--background-2);
+	transition: border-color 0.2s ease-in-out;
 	padding: 10px 20px;
 	border-radius: 5px;
 }
@@ -879,6 +940,7 @@ form .input-group input {
 	padding: 10px 20px;
 	border-radius: 5px;
 	border: 2px solid var(--background-2);
+	transition: border-color 0.2s ease-in-out;
 	background-color: var(--background-2);
 	font-size: 1.2rem;
 	font-family: "Montserrat", sans-serif;
