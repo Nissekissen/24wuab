@@ -49,7 +49,7 @@ function updateQueueList() {
             const errorElement = document.querySelector('.item-list');
             errorElement.classList.remove('item-list');
             errorElement.classList.add('error');
-    
+
             errorElement.innerHTML = `<h3>Inga varor i kön</h3>`;
             return;
         }
@@ -68,10 +68,10 @@ function updateQueueList() {
             const itemStatus = document.createElement('div');
             itemStatus.classList.add('item-status');
 
-            const statusText = item.status === 0 ?'Queued' :
+            const statusText = item.status === 0 ? 'Queued' :
                 item.status == 1 ? 'In Progress' :
-                item.status == 2 ? 'Completed' :
-                'Failed';
+                    item.status == 2 ? 'Completed' :
+                        'Failed';
 
             itemStatus.classList.add(`${statusText.toLowerCase().replace(' ', '-')}`)
             itemStatus.innerHTML = `<p>${statusText}</p>`;
@@ -84,10 +84,18 @@ function updateQueueList() {
 
             const itemButtons = document.createElement('div');
             itemButtons.classList.add('item-buttons');
-            itemButtons.innerHTML = `<button
-        class="btn btn-danger remove-btn"
-        id="${item.id}"
-        >Avbryt</button>`
+
+            const itemBtn = document.createElement('button');
+            itemBtn.classList.add(
+                'btn',
+                'btn-danger',
+                item.paused ? 'resume-btn' :
+                    item.status === 0 ? 'cancel-btn'
+                        : item.status === 1 ? 'disabled'
+                            : 'remove-btn');
+            itemBtn.innerText = item.paused ? 'Skicka tillbaka' : item.status < 2 ? 'Avbryt' : 'Ta bort';
+            itemBtn.id = item.id;
+            itemButtons.appendChild(itemBtn);
             itemButtons.appendChild(itemStatus);
             itemElement.appendChild(itemButtons);
 
@@ -99,9 +107,8 @@ function updateQueueList() {
             itemList.appendChild(divider);
         })
 
-        document.querySelectorAll('.remove-btn').forEach((btn) => {
+        document.querySelectorAll('.cancel-btn, .remove-btn').forEach((btn) => {
             btn.addEventListener('click', (e) => {
-                console.log(e.target.id)
                 removeItemFromQueue(e.target.id, (res) => {
                     updateQueueList();
                 }, (err) => {
@@ -110,17 +117,24 @@ function updateQueueList() {
                 });
             });
         })
-    }, (err) => {
-        console.log(err)
-    });
+
+        document.querySelectorAll('.resume-btn').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                resumeItem(e.target.id, (res) => {
+                    updateQueueList();
+                }, (err) => {
+                    alert('Det gick inte att återuppta varan');
+                    console.error(err);
+                });
+            });
+        });
+    }, console.error);
 }
 
 document.querySelectorAll('.remove-item-btn').forEach(element => element.addEventListener('click', e => {
     removeItem(id, res => {
         window.location.href = '/dashboard';
-    }, err => {
-        console.error(err);
-    });
+    }, console.error);
 }));
 
 updateQueueList();

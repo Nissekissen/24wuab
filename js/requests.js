@@ -33,3 +33,7 @@ function addItemToQueue(item, callback, errCallback) {
 function removeItemFromQueue(id, callback, errCallback) {
     axios.delete(`${url}/queue/${id}`).then(callback, errCallback);
 }
+
+function resumeQueueItem(id, callback, errCallback) {
+    axios.patch(`${url}/queue/resume/${id}`).then(callback, errCallback);
+}

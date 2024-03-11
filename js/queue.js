@@ -79,28 +79,4 @@ function updateQueueList() {
     })
 }
 
-document.getElementById('clearQueue').addEventListener('click', () => {
-    // get all items in the queue
-    getQueue(res => {
-        // remove all items from the queue with status > 1
-        res.data.forEach(item => {
-            if (item.status > 1) {
-                removeItemFromQueue(item.id, (res) => {
-                    updateQueueList();
-                }, (err) => {
-                    // alert('Det gick inte att ta bort varan från kön');
-                    console.error(err);
-                });
-            }
-        })
-    })
-})
-
-document.getElementById('refreshQueue').addEventListener('click', () => {
-    console.log("refreshing!")
-    updateQueueList();
-});
-
-
-
 updateQueueList();
