@@ -13,29 +13,9 @@ getItems((res) => {
         return;
     }
     res.data.forEach((item) => {
-        
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('item');
 
-        const itemText = document.createElement('div');
-        itemText.classList.add('item-text');
-        itemText.innerHTML = `<h3>${item.name}</h3><p>${item.amount}st</p>`;
-        itemElement.appendChild(itemText);
-
-        const itemButtons = document.createElement('div');
-        itemButtons.classList.add('item-buttons');
-        itemButtons.innerHTML = `<a
-        class="btn btn-primary"
-        href="details.html?id=${item.id}"
-        >Detaljer</a>`
-        itemElement.appendChild(itemButtons);
-
-        itemList.appendChild(itemElement);
-
-        const divider = document.createElement('div');
-        divider.classList.add('item-list-divider');
-
-        itemList.appendChild(divider);
+        const itemElement = new Item(item.name, `${item.amount}st`, null, new Button('Detaljer', 'details.html?id=' + item.id, styles.primary));
+        itemList.innerHTML += itemElement.render();
     });
 }, (err) => {
     const errorElement = document.querySelector('.item-list');

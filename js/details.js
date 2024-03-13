@@ -36,7 +36,7 @@ function updateQueueList() {
     // Get queue items
     getQueueItemsFromID(id, (res) => {
         console.log(res);
-        const itemList = document.querySelector('.item-list');
+        let itemList = document.querySelector('.item-list');
         if (!itemList) {
             itemList = document.querySelector('.error');
             itemList.classList.remove('error');
@@ -54,57 +54,8 @@ function updateQueueList() {
             return;
         }
         res.data.forEach((item) => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('item');
-
-            const itemTextWrapper = document.createElement('div');
-            itemTextWrapper.classList.add('item-text-wrapper');
-
-            const itemText = document.createElement('div');
-            itemText.classList.add('item-text');
-            itemText.innerHTML = `<h3>${item.amount}st</h3>`;
-            itemElement.appendChild(itemText);
-
-            const itemStatus = document.createElement('div');
-            itemStatus.classList.add('item-status');
-
-            const statusText = item.status === 0 ? 'Queued' :
-                item.status == 1 ? 'In Progress' :
-                    item.status == 2 ? 'Completed' :
-                        'Failed';
-
-            itemStatus.classList.add(`${statusText.toLowerCase().replace(' ', '-')}`)
-            itemStatus.innerHTML = `<p>${statusText}</p>`;
-            // itemElement.appendChild(itemStatus);
-
-            itemTextWrapper.appendChild(itemText);
-            // itemTextWrapper.appendChild(itemStatus);
-
-            itemElement.appendChild(itemTextWrapper);
-
-            const itemButtons = document.createElement('div');
-            itemButtons.classList.add('item-buttons');
-
-            const itemBtn = document.createElement('button');
-            itemBtn.classList.add(
-                'btn',
-                'btn-danger',
-                item.paused ? 'resume-btn' :
-                    item.status === 0 ? 'cancel-btn'
-                        : item.status === 1 ? 'disabled'
-                            : 'remove-btn');
-            itemBtn.innerText = item.paused ? 'Skicka tillbaka' : item.status < 2 ? 'Avbryt' : 'Ta bort';
-            itemBtn.id = item.id;
-            itemButtons.appendChild(itemBtn);
-            itemButtons.appendChild(itemStatus);
-            itemElement.appendChild(itemButtons);
-
-            itemList.appendChild(itemElement);
-
-            const divider = document.createElement('div');
-            divider.classList.add('item-list-divider');
-
-            itemList.appendChild(divider);
+            const itemElement = new QueueItem(`${item.amount}st`, types[item.type], new Button('Avbryt', null, styles.danger, item.id, [statusBtnClass[item.status]]), item.status, item.paused);
+            itemList.innerHTML += itemElement.render();
         })
 
         document.querySelectorAll('.cancel-btn, .remove-btn').forEach((btn) => {

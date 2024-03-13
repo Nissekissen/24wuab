@@ -8,23 +8,12 @@
 	--color-danger: #ff4d4d;
 	--color-danger-dark: #cc3333;
 
-	--background-light: #fff;
-	--background-light-2: #f4f4f4;
-	--background-light-3: #e0e0e0;
-
-	--background-dark: #121212;
-	--background-dark-2: rgb(54, 54, 54);
-	--background-dark-3: #575757;
-
-	--background: var(--background-light);
-	--background-2: var(--background-light-2);
-	--background-3: var(--background-light-3);
-
-	--text-color-light: #000;
-	--text-color-dark: #fff;
-
-	--text-color: var(--text-color-light);
-
+	--background: #fff;
+	--background-2: #f4f4f4;
+	--background-3: #e0e0e0;
+	
+	--text-color: #000;
+	
 	--in-progress: #ffcc00;
 	--in-progress-border: #e6b800;
 	--queued: #267af9;
@@ -33,19 +22,20 @@
 	--done-border: #00b359;
 	--failed: var(--color-danger);
 	--failed-border: var(--color-danger-dark);
-
+	
 	--scroll: 0;
-
+	
 	--theme-switcher-text-color-dark: #b8b8b880;
 	--theme-switcher-text-color: #b1b0b580;
 	--theme-switcher-text-color-active: white;
 }
 
 html[data-theme="dark"] {
-	--background: var(--background-dark);
-	--background-2: var(--background-dark-2);
-	--background-3: var(--background-dark-3);
-	--text-color: var(--text-color-dark);
+	--background: #121212;
+	--background-2: rgb(54, 54, 54);
+	--background-3: #575757;
+	
+	--text-color: #fff;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -387,7 +377,7 @@ section {
 	z-index: 0;
 }
 
-#intro .timeline {
+.timeline {
 	grid-area: timeline;
 	display: flex;
 	flex-direction: column;
@@ -417,12 +407,25 @@ section {
 
 #introDashboardImage {
 	/* (oldVal - oldMin) * newRange / oldRange + newMin */
-	transform: translateX(
-		calc(1% * (min(max(var(--scroll), 110), 160) - 110) * 3)
+	transform: translateY(
+		calc(-1% * (min(max(var(--scroll), 110), 160) - 110) * 3)
 	);
 	/* translateY(calc(1vh * (min(max(var(--scroll), 110), 160) - 110))); */
 	/* transform: translateX(var(--scroll)); */
 }
+
+.timeline-wrapper {
+	margin-left: 70px;
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "timeline timeline-content";
+	position: absolute;
+	height: 200px;
+	transform: translateY(-200px);
+}
+
+
 
 .timeline-ball {
 	width: 15px;
@@ -569,11 +572,11 @@ h2 {
 
 .box-grid {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(10, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	grid-template-areas:
-		"a a b b b"
-		"c c c d d";
+		"a a a a b b b b b b"
+		"c c c c c c d d d d";
 	width: 100%;
 	height: 100%;
 	gap: 20px;
