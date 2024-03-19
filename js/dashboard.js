@@ -14,7 +14,12 @@ getItems((res) => {
     }
     res.data.forEach((item) => {
 
-        const itemElement = new Item(item.name, `${item.amount}st`, null, new Button('Detaljer', 'details.html?id=' + item.id, styles.primary));
+        const itemElement = new Item(item.name, `${item.amount}st`, null,
+            new Button()
+                .setText('Detaljer')
+                .setHref('details.html?id=' + item.id)
+                .setStyle(styles.primary)
+        );
         itemList.innerHTML += itemElement.render();
     });
 }, (err) => {

@@ -1,6 +1,6 @@
 // Util functions for making requests to the backend
 
-const url = 'http://localhost:3000'
+const url = 'https://97gpl49c-3000.euw.devtunnels.ms'
 
 function getItems(callback, errCallback) {
     axios.get(`${url}/items`).then(callback).catch(errCallback);

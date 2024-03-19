@@ -23,10 +23,19 @@ function updateQueueList() {
 
         res.data.forEach((queueItem) => {
             getItem(queueItem.item_id, res => {
+                console.log(queueItem);
                 const itemElement = new QueueItem(`${res.data.name} - ${queueItem.amount}st`, types[queueItem.type],
-                    queueItem.paused
-                        ? new Button('Avbryt', null, styles.danger, queueItem.id, [statusBtnClass[queueItem.status]])
-                        : new Button('Skicka tillbaka', null, styles.danger, queueItem.id, [statusBtnClass[statusBtnClass.length - 1]]),
+                    new Button()
+                        .setText(
+                            queueItem.paused ? 'Skicka tillbaka' : queueItem.status > 1 ? 'Ta bort' : 'Avbryt'
+                        )
+                        .setStyle(styles.danger)
+                        .setId(queueItem.id)
+                        .setExtraStyles(
+                            queueItem.paused
+                                ? [statusBtnClass[statusBtnClass.length - 1]]
+                                : [statusBtnClass[queueItem.status]]
+                        ),
                     queueItem.status,
                     queueItem.paused);
                 itemList.innerHTML += itemElement.render();

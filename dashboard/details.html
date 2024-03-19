@@ -193,7 +193,7 @@
 						<div class="right-row">
 							<div class="place-order">
 								<h3>Beställ vara</h3>
-								<form id="orderForm">
+								<form class="order-form" id="orderForm">
 									<input
 										type="number"
 										id="orderAmount"
@@ -208,6 +208,26 @@
 									</button>
 								</form>
 							</div>
+							<div class="item-list-divider"></div>
+
+							<div class="place-order">
+								<h3>Fyll på vara</h3>
+								<form class="order-form" id="restockForm">
+									<input
+										type="number"
+										id="orderAmount"
+										placeholder="Antal"
+										name="amount"
+									/>
+									<button
+										type="submit"
+										class="btn btn-primary btn-order"
+									>
+										Fyll på
+									</button>
+								</form>
+							</div>
+							<div class="item-list-divider"></div>
 						</div>
 					</div>
 				</div>

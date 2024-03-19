@@ -10,7 +10,25 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
     const formData = new FormData(e.target);
     const data = {
         item_id: parseInt(id),
-        amount: parseInt(formData.get('amount'))
+        amount: parseInt(formData.get('amount')),
+        type: 0
+    }
+
+    addItemToQueue(data, (res) => {
+        updateQueueList();
+    }, (err) => {
+        console.error(err);
+    });
+
+});
+
+document.getElementById('restockForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+        item_id: parseInt(id),
+        amount: parseInt(formData.get('amount')),
+        type: 1
     }
 
     addItemToQueue(data, (res) => {
@@ -54,7 +72,20 @@ function updateQueueList() {
             return;
         }
         res.data.forEach((item) => {
-            const itemElement = new QueueItem(`${item.amount}st`, types[item.type], new Button('Avbryt', null, styles.danger, item.id, [statusBtnClass[item.status]]), item.status, item.paused);
+            const itemElement = new QueueItem(`${item.amount}st`, types[item.type],
+                    new Button()
+                        .setText(
+                            item.paused ? 'Skicka tillbaka' : item.status > 1 ? 'Ta bort' : 'Avbryt'
+                        )
+                        .setStyle(styles.danger)
+                        .setId(item.id)
+                        .setExtraStyles(
+                            item.paused
+                                ? [statusBtnClass[statusBtnClass.length - 1]]
+                                : [statusBtnClass[item.status]]
+                        ),
+                    item.status,
+                    item.paused);
             itemList.innerHTML += itemElement.render();
         })
 
@@ -71,7 +102,8 @@ function updateQueueList() {
 
         document.querySelectorAll('.resume-btn').forEach((btn) => {
             btn.addEventListener('click', (e) => {
-                resumeItem(e.target.id, (res) => {
+                console.log('resuming', e.target.id)
+                resumeQueueItem(e.target.id, (res) => {
                     updateQueueList();
                 }, (err) => {
                     alert('Det gick inte att återuppta varan');

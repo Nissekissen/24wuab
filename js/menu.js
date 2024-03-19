@@ -40,8 +40,8 @@ document.getElementById('clearQueue')?.addEventListener('click', () => {
     }
 
     if (id) {
-        getQueueItems(id, callback, console.error);
+        getQueueItemsFromId(id, callback, console.error);
     } else {
-        getQueueItems(callback, console.error);
+        getQueue(callback, console.error);
     }
 })

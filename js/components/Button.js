@@ -8,12 +8,37 @@ const styles = {
 }
 
 class Button {
-    constructor(text, href, style, id, extraStyles) {
+    constructor() {
+        this.text = null;
+        this.href = null;
+        this.style = null;
+        this.id = null;
+        this.extraStyles = null;
+    }
+
+    setText(text) {
         this.text = text;
+        return this;
+    }
+
+    setHref(href) {
         this.href = href;
+        return this;
+    }
+
+    setStyle(style) {
         this.style = style;
+        return this;
+    }
+
+    setId(id) {
         this.id = id;
+        return this;
+    }
+
+    setExtraStyles(extraStyles) {
         this.extraStyles = extraStyles;
+        return this;
     }
 
     render() {
