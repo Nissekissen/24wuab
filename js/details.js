@@ -43,7 +43,9 @@ document.getElementById('restockForm').addEventListener('submit', (e) => {
 getItem(id, (res) => {
     const item = res.data;
     document.getElementById('itemName').innerText = item.name;
+    document.getElementById('itemName').classList.remove('placeholder-title');
     document.getElementById('amount').innerText = `${item.amount}st`;
+    document.getElementById('amount').classList.remove('placeholder-amount');
 }, (err) => {
     alert('Det gick inte att hämta varan');
     console.error(err);

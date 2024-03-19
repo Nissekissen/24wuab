@@ -764,10 +764,34 @@ h2 {
 	line-height: 1rem;
 }
 
+.item-text {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
 .placeholder-item .item-text {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+
+}
+
+.placeholder-title {
+	/* for the item header in details.html */
+	display: block;
+	min-height: 2rem;
+	width: 300px;
+	background: var(--background-3);
+	border-radius: 3px;
+}
+
+.placeholder-amount {
+	display: block;
+	min-height: 1.3rem;
+	width: 100px;
+	background: var(--background-3);
+	border-radius: 3px;
 }
 
 .item-text-wrapper {
@@ -888,6 +912,13 @@ h2 {
 
 .item-brief {
 	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.item-brief:has(.placeholder-title) {
+	gap: 17px;
 }
 
 .item-header {
@@ -913,6 +944,7 @@ h2 {
 	transition: border-color 0.2s ease-in-out;
 	padding: 10px 20px;
 	border-radius: 5px;
+	color: white;
 }
 
 .order-form input:focus {
@@ -933,6 +965,10 @@ h2 {
 	gap: 40px;
 }
 
+.place-order.mobile {
+	display: none;
+}
+
 .place-order h3 {
 	font-size: 1.5rem;
 	text-align: center;
@@ -951,6 +987,14 @@ h2 {
 	.content-wrapper .right-row {
 		width: 100%;
 		height: fit-content;
+	}
+
+	.place-order.desktop {
+		display: none;
+	}
+
+	.place-order.mobile {
+		display: flex;
 	}
 }
 
