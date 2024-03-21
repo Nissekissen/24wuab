@@ -10,7 +10,7 @@ function setScrollVar() {
     console.log(percentage);
 
     // switch to dark mode if scroll is more than 100%
-    if (percentage > 100) {
+    if (percentage > 200) {
         htmlElement.dataset.theme = 'dark';
 
         // change the background of #intro
