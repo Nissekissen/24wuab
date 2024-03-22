@@ -126,10 +126,18 @@
 						<div class="left-row">
 							<div class="item-header">
 								<div class="item-brief">
-									<h2 class="item-title placeholder-title" id="itemName">
-										
-									</h2>
-									<p id="amount" class="placeholder-amount"></p>
+									<input
+										class="item-title placeholder-title editable-field"
+										id="itemName"
+										type="text"
+										title="Namn"
+										autocomplete="off"
+										readonly
+									/>
+									<p
+										id="amount"
+										class="placeholder-amount"
+									></p>
 								</div>
 								<div class="btn-row">
 									<button
@@ -153,6 +161,52 @@
 											/>
 										</svg>
 									</button>
+									<button
+										title="Redigera"
+										class="icon-btn"
+										id="editItem"
+									>
+										<svg
+											class="w-6 h-6 text-gray-800 dark:text-white"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											fill="none"
+											viewBox="0 0 24 24"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+											/>
+										</svg>
+									</button>
+									<button
+										title="Spara"
+										class="icon-btn hidden"
+										id="saveItem"
+									>
+										<svg
+											class="w-6 h-6 text-gray-800 dark:text-white"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											fill="none"
+											viewBox="0 0 24 24"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+											/>
+										</svg>
+									</button>
 
 									<button
 										class="btn btn-danger remove-item-btn"
@@ -163,6 +217,26 @@
 								</div>
 							</div>
 							<div class="item-details">
+								<div class="item-details-row">
+									<div class="item-value">
+										<h4>
+											Styckvärde:
+											<input
+												title="Styckvärde"
+												type="text"
+												id="value"
+												class="editable-field"
+												value="0.00kr"
+												readonly
+												autocomplete="off"
+											/>
+										</h4>
+										<h4>
+											Totalt värde:
+											<span id="totalValue"></span>
+										</h4>
+									</div>
+								</div>
 								<div class="orders">
 									<h3>Beställningar</h3>
 									<div class="item-list">
@@ -248,7 +322,7 @@
 								<form class="order-form" id="restockForm">
 									<input
 										type="number"
-										id="orderAmount"
+										id="restockAmount"
 										placeholder="Antal"
 										name="amount"
 									/>

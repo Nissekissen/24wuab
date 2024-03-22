@@ -557,6 +557,10 @@ h2 {
 	background-color: var(--background-2);
 }
 
+.icon-btn.hidden {
+	display: none;
+}
+
 .icon-btn svg {
 	width: 100%;
 	height: 100%;
@@ -753,7 +757,7 @@ h2 {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	/* gap: 20px; */
 	border-right: 1px solid var(--background-3);
 }
 
@@ -762,6 +766,7 @@ h2 {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	gap: 25px;
 	padding: 20px;
 }
@@ -794,6 +799,55 @@ h2 {
 	padding: 0 20px;
 }
 
+input.editable-field {
+	background: transparent;
+	border: none;
+	color: var(--text-color);
+	font-family: "Montserrat", sans-serif;
+}
+
+
+input.editable-field#itemName {
+	font-size: 2rem;
+	font-weight: 600;
+	width: 300px;
+}
+
+input.editable-field#value {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+input.editable-field[readonly]:focus {
+	outline: none;
+}
+
+input.editable-field:not([readonly]) {
+	border-bottom: 2px solid var(--background-3);
+}
+
+input.editable-field:not([readonly]):focus {
+	outline: none;
+	border-bottom: 2px solid var(--color-primary);
+}
+
+input.editable-field.name-error {
+	border-bottom: 2px solid var(--color-danger);
+}
+
+.item-details {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 0 20px;
+}
+
+.item-details-row {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
 .order-form {
 	width: 100%;
 	display: flex;
@@ -822,7 +876,7 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	padding: 0 20px;
+	/* padding: 0 20px; */
 }
 
 .place-order {

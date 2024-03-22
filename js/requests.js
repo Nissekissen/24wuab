@@ -18,6 +18,10 @@ function removeItem(id, callback, errCallback) {
     axios.delete(`${url}/items/${id}`).then(callback, errCallback);
 }
 
+function updateItem(id, item, callback, errCallback) {
+    axios.patch(`${url}/items/${id}`, item).then(callback, errCallback);
+}
+
 function getQueue(callback, errCallback) {
     axios.get(`${url}/queue`).then(callback).catch(errCallback);
 }
