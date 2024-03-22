@@ -450,24 +450,6 @@ section.text-and-img.text-first .img-wrapper {
 	z-index: 0;
 }
 
-.timeline {
-	grid-area: timeline;
-	display: flex;
-	flex-direction: column;
-	z-index: 1;
-	gap: 10px;
-	position: relative;
-}
-
-
-#introDashboardImage {
-	/* (oldVal - oldMin) * newRange / oldRange + newMin */
-	transform: translateY(
-		calc(-1% * (min(max(var(--scroll), 110), 160) - 110) * 3)
-	);
-	/* translateY(calc(1vh * (min(max(var(--scroll), 110), 160) - 110))); */
-	/* transform: translateX(var(--scroll)); */
-}
 
 #intro .section-content {
 	height: 100%;
