@@ -34,23 +34,26 @@ getItems((res) => {
 getCurrentQueueItem((res) => {
     if (res.data) {
         const queueItem = res.data;
-        const queueElement = new QueueItem(`${queueItem.amount}st`, types[queueItem.type],
-            new Button()
-                .setText('Detaljer')
-                .setHref('details.html?id=' + queueItem.id)
-                .setStyle(styles.primary)
-        );
-        document.querySelector('.queue-item').innerHTML = queueElement.render();
+        getItem(queueItem.item_id, (res) => {
+            const queueElement = new QueueItem(`${res.data.name} - ${queueItem.amount}st`, types[queueItem.type],
+                new Button()
+                    .setText(
+                        queueItem.paused ? 'Skicka tillbaka' : queueItem.status > 1 ? 'Ta bort' : 'Avbryt'
+                    )
+                    .setStyle(styles.danger)
+                    .setId(queueItem.id)
+                    .setExtraStyles(
+                        queueItem.paused
+                            ? [statusBtnClass[statusBtnClass.length - 1]]
+                            : [statusBtnClass[queueItem.status]]
+                    ),
+                queueItem.status,
+                queueItem.paused);
+                document.querySelector('.queue-item').innerHTML = queueElement.render();
+        });
     } else {
-        document.querySelector('.queue-item').innerHTML = `<h3>Inga varor i kön</h3>`;
+        document.querySelector('.current-status-row').style.display = 'none';
     }
-}, (err) => { 
-    if (err.response.status === 404) {
-        document.querySelector('.queue-item').innerHTML = `<h3>Inga varor i kön</h3>`;
-        document.querySelector('.queue-item').classList.add('error');
-        document.querySelector('.queue-item').classList.add('no-margin');
-        return;
-    }
-    document.querySelector('.queue-item').innerHTML = `<h3>Det gick inte att hämta nästa vara i kön</h3>`;
-    console.error(err);
+}, (err) => {
+    document.querySelector('.current-status-row').style.display = 'none';
 });

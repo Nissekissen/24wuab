@@ -16,8 +16,11 @@
 		<script src="../js/menu.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 		<script src="../js/requests.js" defer></script>
+		<script src="../js/components/Status.js" defer></script>
+
 		<script src="../js/components/Button.js" defer></script>
 		<script src="../js/components/Item.js" defer></script>
+		<script src="../js/components/QueueItem.js" defer></script>
 		<script src="../js/dashboard.js" defer></script>
 		<script src="../js/themeswitcher.js"></script>
 
@@ -122,7 +125,9 @@
 				</div>
 				<div id="dashboardContent">
 					<div class="current-status-row">
-						<h2>Hanterar just nu</h2>
+						<div class="dashboardHeader">
+							<h2>Hanterar just nu</h2>
+						</div>
 						<div class="queue-item"></div>
 					</div>
 					<div class="dashboardHeader">

@@ -39,6 +39,39 @@ document.getElementById('restockForm').addEventListener('submit', (e) => {
 
 });
 
+document.getElementById('phoneForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+        item_id: parseInt(id),
+        amount: parseInt(formData.get('amount')),
+        type: 0
+    }
+
+    addItemToQueue(data, (res) => {
+        updateQueueList();
+    }, (err) => {
+        console.error(err);
+    });
+})
+
+document.getElementById('restockBtn').addEventListener('click', (e) => {
+    // Get the data from phoneForm and do the same thing as above but with type 1
+    const formData = new FormData(document.getElementById('phoneForm'));
+    console.log(formData);
+    const data = {
+        item_id: parseInt(id),
+        amount: parseInt(formData.get('amount')),
+        type: 1
+    }
+
+    addItemToQueue(data, (res) => {
+        updateQueueList();
+    }, (err) => {
+        console.error(err);
+    });
+});
+
 function updateItemInfo() {
     // Get item details
     getItem(id, (res) => {
