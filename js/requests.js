@@ -41,3 +41,7 @@ function removeItemFromQueue(id, callback, errCallback) {
 function resumeQueueItem(id, callback, errCallback) {
     axios.patch(`${url}/queue/resume/${id}`).then(callback, errCallback);
 }
+
+function getCurrentQueueItem(callback, errCallback) {
+    axios.get(`${url}/queue/current`).then(callback, errCallback);
+}
