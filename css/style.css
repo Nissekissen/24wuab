@@ -548,7 +548,7 @@ h2 {
 
 .component-list {
 	padding: 50px 100px;
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 	font-weight: bold;
 }
 
@@ -576,11 +576,30 @@ h2 {
 .component-list td {
 	padding: 10px;
 	font-size: 1.3rem;
+	/* font-weigt */
 	/* border-bottom: 1px solid var(--background-3); */
 }
 
 .component-list tr.hover {
-	background-color: var(--background-2);
+	/* background-color: var(--background-2); */
+	/* font-weight: bold; */
+	color: var(--text-color);
+}
+
+/* Footer */
+
+footer {
+	width: 100%;
+	background-color: var(--background);
+	padding: 0 50px;
+}
+
+footer .footer-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--background-3);
+	padding: 50px;
 }
 
 /* Dashboard content */
@@ -1111,50 +1130,4 @@ form#addProductForm button[type="submit"] {
 	font-weight: 600;
 	border-width: 2px;
 	padding: 9px 20px;
-}
-
-.carousel-wrapper {
-	width: 50%;
-	height: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.carousel {
-	padding: 25px;
-	width: 100%;
-	height: 400px;
-}
-
-.carousel-cell {
-	width: 70%;
-	height: 100%;
-	margin: 0 20px;
-	background-color: red;
-	transform: scale(1);
-	transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-cell:not(.is-selected) {
-	opacity: 0.5;
-}
-
-.flickity-button {
-	display: none;
-}
-
-@media screen and (max-width: 450px) {
-	.carousel-wrapper {
-		width: 100%;
-		height: 100%;
-	}
-
-	.carousel {
-		padding: 0;
-	}
-
-	.carousel-cell {
-		height: 100%;
-	}
 }

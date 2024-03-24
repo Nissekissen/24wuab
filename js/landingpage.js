@@ -30,7 +30,9 @@ var lastComponent = null;
 const componentImage = document.getElementById('componentImage');
 function updateComponentImage() {
     // set the transform of the image to match the position of the current component
-    if (currentComponent == null) {
+    let index = Array.from(currentComponent.parentElement.children).indexOf(currentComponent);
+    if (currentComponent == null || images[index] === undefined) {
+        currentComponent = null;
         componentImage.style.display = 'none';
         return;
     };
@@ -39,6 +41,8 @@ function updateComponentImage() {
         const scrollClick = new Audio('https://d2aaqgugo71xux.cloudfront.net/assets/audio/scroll-click.mp3');
         scrollClick.play();
     }
+
+    componentImage.src = images[index].src;
 
     componentImage.style.display = 'block';
     componentImage.style.transform = `translateY(${currentComponent.offsetTop}px) translateY(-50%)`;
