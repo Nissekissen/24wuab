@@ -226,6 +226,15 @@ nav ul li a:hover {
 		justify-content: center;
 	}
 
+	header#landingpage-header {
+		padding: 0 20px;
+	}
+
+	.landingpage-logo {
+		padding: 20px 0;
+		font-size: 1.5rem;
+	}
+
 	header .menu-btn,
 	header .add-product {
 		display: block;
@@ -270,10 +279,6 @@ nav ul li a:hover {
 	padding: 20px;
 	list-style: none;
 	width: 100%;
-}
-
-#dashboardNav li {
-	/* padding: 20px 0; */
 }
 
 #dashboardNav a {
@@ -407,6 +412,49 @@ section.text-and-img.text-first .img-wrapper {
 	font-size: 1.5rem;
 	color: #666;
 	text-align: left;
+}
+
+@media screen and (max-width: 450px) {
+
+	section {
+		height: auto;
+	}
+
+	section.text-and-img {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		padding: 50px 20px;
+		gap: 20px;
+	}
+
+	section.text-and-img.text-first,
+	section.text-and-img.img-first {
+		grid-template-areas: "img" "text";
+	}
+
+	section.text-and-img .img-wrapper {
+		padding: 0;
+	}
+
+	section.text-and-img.img-first .img-wrapper {
+		padding: 0;
+	}
+
+	section.text-and-img.text-first .img-wrapper {
+		padding: 0;
+	}
+
+	section.text-and-img .text-wrapper {
+		justify-content: flex-start;
+	}
+
+	.text-wrapper h2 {
+		font-size: 2rem;
+	}
+
+	.text-wrapper p {
+		font-size: 1.2rem;
+	}
 }
 
 @property --intro-bg-color1 {
@@ -546,6 +594,28 @@ h2 {
 	transform: translateY(calc(1% * (min(max(var(--scroll), 100), 150) - 100))) translateY(calc(-1% * (min(max(var(--scroll), 150), 200) - 150) * 2));
 } */
 
+@media screen and (max-width: 450px) {
+
+
+	#intro .section-content h1 {
+		font-size: 2rem;
+	}
+
+	#intro .section-content p {
+		font-size: 1.3rem;
+	}
+
+	#intro .intro-content {
+		padding-left: 20px;
+		padding-right: 0;
+	
+	}
+
+	#section5, #section6 {
+		transform: translateY(0);
+	}
+}
+
 .component-list {
 	padding: 50px 100px;
 	color: var(--color-primary);
@@ -586,6 +656,33 @@ h2 {
 	color: var(--text-color);
 }
 
+@media screen and (max-width: 450px) {
+	.component-list {
+		padding: 50px 20px;
+	}
+
+	.component-list-header {
+		font-size: 2rem;
+	}
+
+	.component-list-wrapper {
+		flex-direction: column;
+	}
+
+	.component-list-wrapper img {
+		visibility: hidden;
+	}
+
+	.component-list table {
+		width: 100%;
+	}
+
+	.component-list td {
+		font-size: 1rem;
+	}
+
+}
+
 /* Footer */
 
 footer {
@@ -600,6 +697,14 @@ footer .footer-content {
 	align-items: center;
 	border-top: 1px solid var(--background-3);
 	padding: 50px;
+}
+
+@media screen and (max-width: 450px) {
+	footer .footer-content {
+		flex-direction: column;
+		gap: 20px;
+		padding: 20px;
+	}
 }
 
 /* Dashboard content */

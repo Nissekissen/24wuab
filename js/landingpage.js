@@ -1,8 +1,8 @@
 // For handling the landing page
 
+const htmlElement = document.documentElement;
 
 function setScrollVar() {
-    const htmlElement = document.documentElement;
     const percentage = htmlElement.scrollTop * 100 / htmlElement.clientHeight;
 
     htmlElement.style.setProperty('--scroll', percentage);
@@ -10,18 +10,62 @@ function setScrollVar() {
 
     // switch to dark mode if scroll is more than 100%
     if (percentage > 300 && percentage < 600) {
-        htmlElement.dataset.theme = 'dark';
+            // htmlElement.dataset.theme = 'dark';
 
         // change the background of #intro
 
-        document.getElementById('introDashboardImage').attributes.src.value = '../img/darkmode.jpg';
+        // document.getElementById('introDashboardImage').attributes.src.value = `../img/darkmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
     } else {
-        htmlElement.dataset.theme = 'light';
+        // htmlElement.dataset.theme = 'light';
 
-        document.getElementById('introDashboardImage').attributes.src.value = '../img/lightmode.jpg';
+        // document.getElementById('introDashboardImage').attributes.src.value = `../img/lightmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
 
     }
 }
+
+const introDashboardImage = document.querySelector('#introDashboardImage');
+
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.9
+};
+
+
+const observer1 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Call your function here when #introDashboardImage is entirely in view
+            if (entry.boundingClientRect.top > 0) {
+                document.getElementById('introDashboardImage').attributes.src.value = `../img/darkmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
+                htmlElement.dataset.theme = 'dark';
+            } else {
+                document.getElementById('introDashboardImage').attributes.src.value = `../img/lightmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
+                htmlElement.dataset.theme = 'light';
+            
+            }
+        }
+    });
+}, options);
+observer1.observe(introDashboardImage);
+
+const observer2 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Call your function here when #introDashboardImage is entirely in view
+            if (entry.boundingClientRect.top > 0) {
+                document.getElementById('introDashboardImage').attributes.src.value = `../img/lightmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
+                htmlElement.dataset.theme = 'light';
+            } else {
+                document.getElementById('introDashboardImage').attributes.src.value = `../img/darkmode${window.innerWidth < 450 ? '-mobile.png' : '.jpg'}`;
+                htmlElement.dataset.theme = 'dark';
+            
+            }
+        }
+    });
+}, options);
+observer2.observe(document.getElementById('section7'));
+
 
 document.addEventListener('scroll', setScrollVar);
 
@@ -30,7 +74,7 @@ var lastComponent = null;
 const componentImage = document.getElementById('componentImage');
 function updateComponentImage() {
     // set the transform of the image to match the position of the current component
-    let index = Array.from(currentComponent.parentElement.children).indexOf(currentComponent);
+    let index = Array.from(currentComponent?.parentElement.children || []).indexOf(currentComponent);
     if (currentComponent == null || images[index] === undefined) {
         currentComponent = null;
         componentImage.style.display = 'none';
