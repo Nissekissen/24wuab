@@ -356,7 +356,7 @@ nav ul li a:hover {
 	}
 }
 
-section {
+section:not(#call-to-action) {
 	height: 100vh;
 }
 
@@ -399,7 +399,6 @@ section.text-and-img.text-first .img-wrapper {
 
 .img-wrapper img {
 	width: 100%;
-	border-radius: 10px;
 }
 
 .text-wrapper h2 {
@@ -412,6 +411,13 @@ section.text-and-img.text-first .img-wrapper {
 	font-size: 1.5rem;
 	color: #666;
 	text-align: left;
+}
+
+#call-to-action {
+	padding: 0 0 50px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (max-width: 450px) {

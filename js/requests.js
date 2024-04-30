@@ -1,6 +1,6 @@
 // Util functions for making requests to the backend
 
-const url = 'http://192.168.0.178:3000'
+const url = 'http://localhost:3000'
 
 function getItems(callback, errCallback) {
     axios.get(`${url}/items`).then(callback).catch(errCallback);
